@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Panel</title>
+		<link rel="stylesheet" href="{{ url_for('static',filename='styles/panelpage.css') }}">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Intelligent Query System</h1>
+		</header>	
+
+		<form action="" method="POST">
+
+		<div class="overall">	
+
+			<div class="col">
+
+				<div>
+
+					<p id="header2">Choose tables</p>
+
+					<div>
+						<div class="table1">
+							<select class="select-css" id="table_name">
+								{% for table_name in table_names %}
+							  		<option value="{{ table_name }}">{{ table_name }}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+				  		<div class="table1">
+				  			<button type="button" class="button-css" id="add_table_btn">Add table</button>
+				  		</div>
+
+				  		<div class="table1">
+				  			<button type="button" class="button-css" id="clear_table_btn">Clear table</button>
+				  		</div>
+			  		</div>
+
+			  		<div>
+				  		<div class="add_table_area">
+				  			<textarea class="text-css" id="add_table_area" rows="6" cols="60"></textarea>
+						</div>
+					</div>
+
+					<div>
+				  		<div class="add_table_area">
+			  				<button type="button" class="button-css" id="gentable_btn">Generate</button>
+			  			</div>
+			  		</div>
+
+		  		</div>
+
+		  		<div>
+
+			  		<p id="header2">Join tables</p>
+
+			  		<div>
+				  		<div class="join1">
+				  			<select class="select-css" id="table1_col" name="table1_col">
+							</select>
+						</div>
+
+						<div class="join1">
+				  			<select class="select-css" name="select_join" id="select_join">
+				      			<option value="LEFT JOIN">LEFT JOIN</option>
+				  				<option value="RIGHT JOIN">RIGHT JOIN</option>
+					      		<option value="OUTER JOIN">OUTER JOIN</option>
+				  				<option value="INNER JOIN">INNER JOIN</option>
+							</select>
+						</div>
+
+				  		<div class="join1">
+				  			<select class="select-css" id="table2_col" name="table2_col">
+							</select>
+						</div>
+					</div>
+
+					<div>
+				  		<div class="join2">
+				  			<button class="button-css" type="button" id="join_btn">Join</button>
+				  		</div>
+				  		<div class="join2">
+			  				<button class="button-css" type="button" id=clear_join_btn>Clear</button>
+		  				</div>
+			  		</div>
+
+			  		<div class="join_table_area">
+			  			<textarea class="text-css" id="join_table_area" name="join_table_area" rows="6" cols="60"></textarea>
+					</div>
+				</div>
+
+				<div>
+
+					<p id="header2">Choose features</p>
+
+					<div>
+						<div class="feature1">
+				  			<select class="select-css" id="agg_func">
+								<option value="" > </option>
+				      			<option value="AVG"> AVG </option>
+				  				<option value="SUM"> SUM </option>
+					      		<option value="COUNT"> COUNT </option>
+				  				<option value="MIN"> MIN </option>
+				  				<option value="MAX"> MAX </option>
+				  				<option value="YEAR"> YEAR </option>
+				  				<option value="MONTH"> MONTH </option>
+				  				<option value="DAY"> DAY </option>
+							</select>
+						</div>
+
+						<div class="feature1">
+							<select class="select-css" name="feature_col" id="feature_col">
+								<option value="*">ALL</option>
+							</select>
+						</div>
+					</div>
+
+					<div>
+						<div class="feature2">
+							<button class="button-css" type="button" id="add_feature_btn">Add feature</button>
+						</div>
+
+						<div class="feature2">
+							<button class="button-css" type="button" id="clear_feature_btn">Clear feature</button>
+						</div>
+					</div>
+
+					<div class="add_features_area">
+			  			<textarea class="text-css" id="add_features_area" name="add_features_area" rows="6" cols="60"></textarea>
+			  		</div>
+
+				</div>
+
+			</div>
+
+			<div class="col">
+
+				<div class="row1">
+
+					<p id="header2">Choose filters</p>
+
+					<div>
+						<div class="filter1">
+							<select class="select-css" id="filter_col">
+							</select>
+						</div>
+
+						<div class="filter1">
+				  			<select class="select-css" id="filter_func">
+				      			<option value="="> = </option>
+				  				<option value="!="> != </option>
+					      		<option value=">"> > </option>
+				  				<option value="<"> < </option>
+				  				<option value=">="> >= </option>
+				  				<option value="<="> <= </option>
+							</select>
+						</div>
+
+						<div class="filter1">
+				  			<textarea id="filter_equal" rows="1" cols="12"></textarea>
+						</div>
+					</div>
+
+					<div>
+				  		<div class="filter2">
+				  			<button class="button-css" type="button" id="add_filter_btn">Add filter</button>
+				  		</div>
+
+				  		<div class="filter2">
+				  			<button class="button-css" type="button" id="clear_filter_btn">Clear filter</button>
+				  		</div>
+			  		</div>
+
+			  		<div class="add_filters_area">
+			  			<textarea class="text-css" id="add_filters_area" rows="6" cols="60"></textarea>
+					</div>
+
+				</div>
+
+				<div>
+
+					<p id="header2">Group by</p>
+
+					<div>
+						<div class="group1">
+							<select class="select-css" name="group_col" id="group_col">
+							</select>
+						</div>
+
+				  		<div class="group1">
+				  			<button class="button-css" type="button" id="add_group_btn">Add group by</button>
+				  		</div>
+
+				  		<div class="group1">
+				  			<button class="button-css" type="button" id="clear_group_btn">Clear group by</button>
+				  		</div>
+			  		</div>			  		
+
+			  		<div class="add_group_area">
+			  			<textarea class="text-css" id="add_group_area" rows="6" cols="60"></textarea>
+					</div>
+
+				</div>
+
+				<div>
+
+					<div>
+
+						<p id="header2">Query</p>
+
+						<div class="down">
+							<div class="down1">File name:</div>
+
+							<div class="down1">
+								<textarea class="text-css" id="download_area" rows="1" cols="15"></textarea>
+							</div>
+						</div>
+
+						<div class="down">
+							<div class="down2">
+				  				<button class="button-css" type="button" id="preview_btn">Preview</button>
+				  			</div>
+
+							<div class="down2">
+				  				<button class="button-css" type="button" id="download_btn">Download</button>
+				  			</div>
+			  			</div>
+  					</div>
+				</div>	  								
+
+  				<div>
+					<p id="header2">Macro</p>
+
+					<div class="macro">
+						<div class="macro1">Record name:</div>
+
+						<div class="macro1">
+							<textarea class="text-css" id="macro_area" rows="1" cols="15"></textarea>
+						</div>
+
+						<div class="macro1">
+							<select class="select-css" id="macro_name">
+								{% for macro_name in macro_names %}
+							  		<option value="{{ macro_name }}">{{ macro_name }}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+
+					<div class="macro">
+				  		<div class="macro2">
+				  			<button class="button-css" type="button" id="import_btn">Import</button>
+				  		</div>
+
+				  		<div class="macro2">
+				  			<button class="button-css" type="button" id="record_btn">Record</button>
+				  		</div>
+
+				  		<div class="macro2">
+				  			<button class="button-css" type="button" id="delete_btn">Delete</button>
+				  		</div>
+			  		</div>
+
+		  		</div>
+	  		</div>
+
+	  	</div>
+		</form>	
+
+  		<script type="text/javascript" src="{{url_for('static', filename='app.js')}}" charset="utf-8"></script>
+
+	</body>
+</html>

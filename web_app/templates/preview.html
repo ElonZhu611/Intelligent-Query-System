@@ -1,0 +1,26 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>macroname</th>
+      <th>macrodate</th>
+      <th>macrotable</th>
+      <th>macrojoin</th>
+      <th>macrofeature</th>
+      <th>macrofilter</th>
+      <th>macrogroup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>amount_each_one</td>
+      <td>2021-05-03</td>
+      <td>customer\nsale</td>
+      <td>sale.customer_id\nLEFT JOIN\ncustomer.id</td>
+      <td>customer.last_name\ncustomer.first_name\nSUM(sale.amount)</td>
+      <td>customer.age&gt;18</td>
+      <td>customer.id</td>
+    </tr>
+  </tbody>
+</table>
